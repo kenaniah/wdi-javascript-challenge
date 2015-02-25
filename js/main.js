@@ -10,7 +10,7 @@ var routes = {
 /**
  * Initialize route handling
  */
-$(window).on("hashchange", function(event){
+$(window).on("hashchange popstate", function(event){
 	
 	//Hide all pages
 	$(".js-page").addClass("hidden");
@@ -29,6 +29,21 @@ $(window).on("hashchange", function(event){
 		$page.removeClass("hidden");
 		$("NAV A[href='" + location.hash + "']").addClass("active");
 		
+		//Populate the search form
+		var params = $.deparam.querystring();
+		var $form = $("#search-form");
+		if(params['t'] || params['y']){
+			
+			$form.find("INPUT[name='t']").val(params['t']);
+			$form.find("INPUT[name='y']").val(params['y']);
+			
+			//Resubmit if the form changed
+			if($form.data('last-query') != $form.serialize()){
+				$form.submit();
+			}
+			
+		}
+		
 		//Perform autofocusing
 		$page.find("[autofocus]").focus();
 		
@@ -40,7 +55,32 @@ $(window).on("hashchange", function(event){
 	
 });
 
-//Ensure the proper route is rendered on load
+/**
+ * Onload
+ */
 $(function(){
+	
+	//Ensure a valid route is rendered on load
 	$(window).trigger("hashchange");
-})
+	
+	//Handle search form submissions
+	$("#search-form").submit(function(){
+		
+		console.debug($(this).serialize());
+		
+		//Push the state if not already the same URL
+		var url = "?" + $(this).serialize() + location.hash;
+		if(url != window.location.search + location.hash){
+			history.pushState(null, null, url);
+			console.debug("history state pushed");
+		}
+		
+		//Track the last search
+		$(this).data('last-query', $(this).serialize());
+		
+		//Ensure the default browser action does not fire
+		return false;
+		
+	});
+	
+});
