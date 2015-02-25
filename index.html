@@ -44,19 +44,16 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Flick Finder</a>
+				<a class="navbar-brand" href="#/">Flick Finder</a>
 			</div>
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li>
-						<a href="#">About</a>
+						<a href="#/about">About</a>
 					</li>
 					<li>
-						<a href="#">Services</a>
-					</li>
-					<li>
-						<a href="#">Contact</a>
+						<a href="#/page-2">Another Page</a>
 					</li>
 				</ul>
 			</div>
@@ -66,7 +63,7 @@
 	</nav>
 
 	<!-- Page Content -->
-	<div class="container">
+	<div id="main" class="container">
 
 		<div class="row">
 			<div class="col-lg-12 text-center">
@@ -87,6 +84,22 @@
 
 	</div>
 	<!-- /.container -->
+	
+	<!-- About page -->
+	<div id="about" class="container hidden">
+		<div class="col-lg-12 text-center">
+			<h1>About This App</h1>
+			<p>This app was designed as a solution to the <a href="https://gist.github.com/generalassembly-wdi/bd1d8a399f259495ed56">GA Javascript Challenge</a>.</p>
+		</div>
+	</div>
+	
+	<!-- Another page -->
+	<div id="page-2" class="container hidden">
+		<div class="col-lg-12 text-center">
+			<h1>Another Page</h1>
+			<p>This page really serves no purpose.</p>
+		</div>
+	</div>
 	
 </body>
 
