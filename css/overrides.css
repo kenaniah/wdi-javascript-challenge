@@ -8,3 +8,6 @@ body {
 	margin-right: 0.25em;
 	cursor: pointer;
 }
+A.active {
+	color: #ffffff !important;
+}
