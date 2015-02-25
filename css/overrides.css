@@ -11,3 +11,12 @@ body {
 A.active {
 	color: #ffffff !important;
 }
+.img-spinner {
+	display: none;
+	width: 128px;
+	height: 128px;
+	margin-top: 5em;
+}
+.js-page, .js-results, #results-template {
+	display: none;
+}

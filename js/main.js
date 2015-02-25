@@ -13,7 +13,7 @@ var routes = {
 $(window).on("hashchange popstate", function(event){
 	
 	//Hide all pages
-	$(".js-page").addClass("hidden");
+	$(".js-page").hide();
 	
 	//Mark all links as inactive
 	$("NAV A").removeClass("active");
@@ -26,7 +26,7 @@ $(window).on("hashchange popstate", function(event){
 		
 		//Show the selected page
 		var $page = $("#" + routes[location.hash]);
-		$page.removeClass("hidden");
+		$page.show();
 		$("NAV A[href='" + location.hash + "']").addClass("active");
 		
 		//Populate the search form
@@ -60,23 +60,45 @@ $(window).on("hashchange popstate", function(event){
  */
 $(function(){
 	
+	//Compile the Handlebars template
+	var results_template = Handlebars.compile($("#results-template").html());
+	
 	//Ensure a valid route is rendered on load
 	$(window).trigger("hashchange");
 	
 	//Handle search form submissions
 	$("#search-form").submit(function(){
 		
-		console.debug($(this).serialize());
+		var params = $(this).serialize();
 		
 		//Push the state if not already the same URL
-		var url = "?" + $(this).serialize() + location.hash;
-		if(url != window.location.search + location.hash){
-			history.pushState(null, null, url);
+		if(window.location.search != "?" + params){
+			history.pushState(null, null, "?" + params + location.hash);
 			console.debug("history state pushed");
 		}
 		
 		//Track the last search
-		$(this).data('last-query', $(this).serialize());
+		$(this).data('last-query', params);
+		
+		//Fade in the spinner
+		$(".js-results").hide();
+		$(".img-spinner").fadeIn();
+		
+		//Perform the AJAX request
+		$.ajax("http://www.omdbapi.com/?" + params + "&plot=full&r=json", {
+			dataType: "json",
+			success: function(response){
+				
+				if(response['Response'] == "True"){
+					$(".js-results").html(results_template(response));
+				}else{
+					$(".js-results").html("<h2>Nothing Found :-(</h2>");
+				}
+				
+				$(".img-spinner").hide();
+				$(".js-results").fadeIn();
+			}
+		});
 		
 		//Ensure the default browser action does not fire
 		return false;

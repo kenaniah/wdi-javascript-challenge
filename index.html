@@ -24,6 +24,7 @@
 	
 	<!-- Include main javascript -->
 	<script src="js/jquery.bbq.js"></script>
+	<script src="js/handlebars-v3.0.0.js"></script>
 	<script src="js/main.js"></script>
 	
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -66,7 +67,7 @@
 	</nav>
 	
 	<!-- Main Page -->
-	<div id="main" class="container js-page hidden">
+	<div id="main" class="container js-page">
 
 		<div class="row">
 			<div class="col-lg-12 text-center">
@@ -85,12 +86,21 @@
 			</div>
 		</div>
 		<!-- /.row -->
+		
+		<div class="row">
+			<div class="col-lg-12 text-center">
+				<img class="img-spinner" src="images/loading.gif" />
+				<div class="js-results">
+					<h2>Search Results</h2>
+				</div>
+			</div>
+		</div>
 
 	</div>
 	<!-- /.container -->
 	
 	<!-- About page -->
-	<div id="about" class="container js-page hidden">
+	<div id="about" class="container js-page">
 		<div class="col-lg-12 text-center">
 			<h1>About This App</h1>
 			<p>This app was designed as a solution to the <a target="_blank" href="https://gist.github.com/generalassembly-wdi/bd1d8a399f259495ed56">GA Javascript Challenge</a>.</p>
@@ -98,11 +108,16 @@
 	</div>
 	
 	<!-- Another page -->
-	<div id="page-2" class="container js-page hidden">
+	<div id="page-2" class="container js-page">
 		<div class="col-lg-12 text-center">
 			<h1>Another Page</h1>
 			<p>This page really serves no purpose.</p>
 		</div>
+	</div>
+	
+	<!-- Search results template -->
+	<div id="results-template">
+		<h2>{{Title}}</h2>
 	</div>
 	
 </body>
