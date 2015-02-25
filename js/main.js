@@ -83,4 +83,9 @@ $(function(){
 		
 	});
 	
+	//Override the reset button
+	$("INPUT[type='reset']").click(function(){
+		window.location.search = "";
+	});
+	
 });
