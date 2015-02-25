@@ -1,0 +1,10 @@
+body {
+	padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+}
+.form-inline INPUT {
+	margin-right: 0.5em;
+}
+.form-inline LABEL {
+	margin-right: 0.25em;
+	cursor: pointer;
+}
