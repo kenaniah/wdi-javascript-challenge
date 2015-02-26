@@ -117,4 +117,9 @@ $(function(){
 		window.location.search = "";
 	});
 	
+	//Blur any links that have the blur class when clicked
+	$(".js-blur").on("click", function(){
+		$(this).blur();
+	});
+	
 });
