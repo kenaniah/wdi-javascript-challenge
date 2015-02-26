@@ -78,7 +78,7 @@
 						<label class="control-label" for="t">Title:</label>
 						<input name="t" id="t" type="search" class="form-control" placeholder="Search for..." required autofocus />
 						<label class="control-label" for="y">Year:</label>
-						<input name="y" id="y" type="text" class="form-control" pattern="[0-9]{4}" placeholder="2000" />
+						<input name="y" id="y" type="text" class="form-control" pattern="[0-9]{4}" />
 						<input type="submit" class="form-control btn-primary" value="Search" />
 						<input type="reset" class="form-control" value="Clear" />
 					
@@ -117,6 +117,7 @@
 	
 	<!-- Search results template -->
 	<div id="results-template">
+		<hr>
 		<div class="row">
 			{{#if Poster}}
 			<div class="col-md-3">
@@ -124,8 +125,27 @@
 			</div>
 			{{/if}}
 			<div class="col-md-9 text-left">
-				<h3 class='no-margin-top'>{{Title}}</h3>
+				<h2 class='no-margin-top'>{{Title}}</h2>
+				<p><small>{{Type}} &bull; {{Rated}} &bull; {{Runtime}} &bull; {{Released}} ({{Country}})</small></p>
 				<p>{{Plot}}</p>
+				<table class="table table-bordered">
+					<tr>
+						<th>Genres:</th>
+						<td>{{Genre}}</td>
+					</tr>
+					<tr>
+						<th>Director:</th>
+						<td>{{Director}}</td>
+					</tr>
+					<tr>
+						<th>Actors:</th>
+						<td>{{Actors}}</td>
+					</tr>
+					<tr>
+						<th>IMDB Link:</th>
+						<td><a href="http://www.imdb.com/title/{{imdbID}}/" target="_blank">{{Title}} on IMDB</a></td>
+					</tr>
+				</table>
 			</div>
 		</div>
 	</div>

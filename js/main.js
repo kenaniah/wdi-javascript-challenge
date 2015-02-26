@@ -91,6 +91,9 @@ $(function(){
 				
 				console.debug(response);
 				
+				//Transformations
+				if(response['Poster'] == "N/A") response['Poster'] = null;
+				
 				if(response['Response'] == "True"){
 					$(".js-results").html(results_template(response));
 				}else{
