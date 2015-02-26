@@ -51,6 +51,8 @@ $(window).on("hashchange popstate", function(event){
 		
 		//Redirect to the index route
 		history.replaceState(null, null, "#/");
+		$(window).trigger("hashchange");
+		
 	}
 	
 });
