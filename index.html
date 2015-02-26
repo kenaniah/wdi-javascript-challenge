@@ -117,7 +117,17 @@
 	
 	<!-- Search results template -->
 	<div id="results-template">
-		<h2>{{Title}}</h2>
+		<div class="row">
+			{{#if Poster}}
+			<div class="col-md-3">
+				<img class="img-responsive" src="{{Poster}}" />
+			</div>
+			{{/if}}
+			<div class="col-md-9 text-left">
+				<h3 class='no-margin-top'>{{Title}}</h3>
+				<p>{{Plot}}</p>
+			</div>
+		</div>
 	</div>
 	
 </body>

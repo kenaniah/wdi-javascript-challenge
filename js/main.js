@@ -89,6 +89,8 @@ $(function(){
 			dataType: "json",
 			success: function(response){
 				
+				console.debug(response);
+				
 				if(response['Response'] == "True"){
 					$(".js-results").html(results_template(response));
 				}else{

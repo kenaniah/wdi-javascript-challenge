@@ -20,3 +20,9 @@ A.active {
 .js-page, .js-results, #results-template {
 	display: none;
 }
+.js-results {
+	margin-top: 2em;
+}
+.no-margin-top {
+	margin-top: 0px;
+}
