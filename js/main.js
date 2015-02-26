@@ -74,7 +74,7 @@ $(function(){
 		//Push the state if not already the same URL
 		if(window.location.search != "?" + params){
 			history.pushState(null, null, "?" + params + location.hash);
-			console.debug("history state pushed");
+			//console.debug("history state pushed");
 		}
 		
 		//Track the last search
@@ -89,7 +89,7 @@ $(function(){
 			dataType: "json",
 			success: function(response){
 				
-				console.debug(response);
+				//console.debug(response);
 				
 				//Transformations
 				if(response['Poster'] == "N/A") response['Poster'] = null;
