@@ -50,7 +50,7 @@ $(window).on("hashchange popstate", function(event){
 	}else{
 		
 		//Redirect to the index route
-		location.hash = "#/"
+		history.replaceState(null, null, "#/");
 	}
 	
 });
